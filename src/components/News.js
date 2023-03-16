@@ -1,0 +1,244 @@
+import React, { Component } from "react";
+import NewsItem from "./NewsItem";
+
+export default class News extends Component {
+
+  //   articles = [
+  //     {
+  //         "source": {
+  //             "id": "cnn",
+  //             "name": "CNN"
+  //         },
+  //         "author": "",
+  //         "title": "Video: Former NCAA basketball coach reveals what she thinks is 'ruining' college sports | CNN",
+  //         "description": "Former Notre Dame basketball coach and NCAA champion Muffet McGraw joins CNN's Chris Wallace to discuss players getting paid to play college sports.",
+  //         "url": "http://us.cnn.com/videos/sports/2023/03/15/muffet-mcgraw-ncaa-former-coach-basketball-pay-for-play-college-sports-wallace-intv-pt-vpx.cnn",
+  //         "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/230314223544-ncaa-muffet-mcgraw-vpx.jpg?c=16x9&q=w_800,c_fill",
+  //         "publishedAt": "2023-03-15T02:46:19Z",
+  //         "content": null
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "bloomberg",
+  //             "name": "Bloomberg"
+  //         },
+  //         "author": "Bloomberg",
+  //         "title": "Sinclair Sports Unit Goes Bankrupt Following Game Disruption",
+  //         "description": null,
+  //         "url": "https://news.google.com/rss/articles/CBMib2h0dHBzOi8vd3d3LmJsb29tYmVyZy5jb20vbmV3cy9hcnRpY2xlcy8yMDIzLTAzLTE1L3NpbmNsYWlyLXNwb3J0cy11bml0LWdvZXMtYmFua3J1cHQtZm9sbG93aW5nLWdhbWUtZGlzcnVwdGlvbtIBAA?oc=5",
+  //         "urlToImage": null,
+  //         "publishedAt": "2023-03-15T01:14:00+00:00",
+  //         "content": null
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "espn",
+  //             "name": "ESPN"
+  //         },
+  //         "author": "Alden GonzalezESPN Staff Writer ",
+  //         "title": "Diamond, owner of RSNs for 40-plus teams, files for bankruptcy",
+  //         "description": "Diamond Sports Group, the Sinclair subsidiary that controls the RSNs for more than 40 teams across MLB, the NHL and the NBA, has filed for bankruptcy.",
+  //         "url": "http://espn.go.com/mlb/story/_/id/35860875/diamond-owner-rsns-40-plus-teams-files-bankruptcy",
+  //         "urlToImage": "https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2023%2F0315%2Fr1144652_1024x576_16%2D9.jpg",
+  //         "publishedAt": "2023-03-15T00:55:00Z",
+  //         "content": "Diamond Sports Group, the Sinclair subsidiary that controls the regional sports networks for more than 40 teams across Major League Baseball, the National Hockey League and the National Basketball As… [+3375 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "axios",
+  //             "name": "Axios"
+  //         },
+  //         "author": "Tim Baysinger",
+  //         "title": "Diamond Sports Group files for Chapter 11 bankruptcy",
+  //         "description": "The RSN group owns 42 teams' local TV rights.",
+  //         "url": "https://www.axios.com/2023/03/15/diamond-sports-group-bankruptcy-diamondbacks",
+  //         "urlToImage": "https://images.axios.com/3P_BBtS8TVmQYwAL9SCtN5R7s-8=/0x0:0x0/1366x768/2023/03/11/1678563800574.jpg",
+  //         "publishedAt": "2023-03-15T00:23:10Z",
+  //         "content": "Bally Sports owner Diamond Sports Group filed for Chapter 11 bankruptcy protection on Tuesday. \r\nWhy it matters: How Diamond emerges or doesn't from this process will be viewed as a bellwether for th… [+1930 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "lequipe",
+  //             "name": "L'equipe"
+  //         },
+  //         "author": "L'EQUIPE",
+  //         "title": "Le flash sports du 15 mars",
+  //         "description": "Retrouvez l'essentiel de l'actualité sportive avec votre flash L'Équipe quotidien.",
+  //         "url": "https://www.lequipe.fr/Tous-sports/Actualites/Le-flash-sports-du-15-mars/1385909",
+  //         "urlToImage": "https://medias.lequipe.fr/img-photo-jpg/le-flash-sports-du-15-mars-l-equipe/1500000001760157/0:0,1995:1330-640-427-75/25774.jpg",
+  //         "publishedAt": "2023-03-14T23:12:00+00:00",
+  //         "content": "Grâce à un historique Erling Haaland, Manchester City s'est qualifié pour les quarts de finale de la Ligue des champions. Ce mercredi soir, le Real Madrid de Karim Benzema doit finir le travail contr… [+123 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "les-echos",
+  //             "name": "Les Echos"
+  //         },
+  //         "author": "Les Echos",
+  //         "title": "Retraites : les prévisions de trafic dans les transports ce mercredi",
+  //         "description": "La circulation sera plus fluide dans le métro parisien que dans les trains et les RER. Les perturbations en détail.",
+  //         "url": "https://www.lesechos.fr/industrie-services/tourisme-transport/retraites-les-previsions-de-trafic-dans-les-transports-ce-mercredi-1915583",
+  //         "urlToImage": "https://media.lesechos.com/api/v1/images/view/6410a3e7047c524ff1388129/1280x720/0703560674058-web-tete.jpg",
+  //         "publishedAt": "2023-03-14T16:40:55Z",
+  //         "content": "Le mouvement de grève contre la réforme des retraites se poursuit avec une huitième journée de mobilisation prévue ce mercredi. Dans des prévisions publiées ce mardi, la RATP annonce « un trafic quas… [+2519 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "time",
+  //             "name": "Time"
+  //         },
+  //         "author": "Sean Gregory",
+  //         "title": "An Investigation Into U.S. Soccer Reveals Extreme Sports Parenting Gone Too Far",
+  //         "description": "After an investigation, Gregg Berhalter remains under consideration to coach the men's team at the 2026 World Cup, but U.S. Soccer still finds itself in a difficult spot.",
+  //         "url": "http://time.com/6262577/us-soccer-claudio-reyna-gio-berhalter/",
+  //         "urlToImage": "https://api.time.com/wp-content/uploads/2023/03/Claudio-Reyna.jpg?quality=85&w=1200&h=628&crop=1",
+  //         "publishedAt": "2023-03-14T06:00:07Z",
+  //         "content": "Any casual follower of the U.S. men’s national soccer team could suss out that an investigation into the ugly feud brewing between World Cup coach Gregg Berhalter and parents of player Gio Reyna was … [+8521 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "le-monde",
+  //             "name": "Le Monde"
+  //         },
+  //         "author": "Service vidéo du Monde",
+  //         "title": "Vidéo. « Personne n’a écouté nos plaintes » : la colère gronde en Grèce après la collision mortelle de deux trains",
+  //         "description": "Vidéo - Les manifestations se multiplient en Grèce, une semaine après la collision de deux trains qui a causé la mort de cinquante-sept passagers. La population se plaint de l’insalubrité du service de transports publics, qui semble être de notoriété publique…",
+  //         "url": "https://www.lemonde.fr/international/video/2023/03/09/personne-n-a-ecoute-nos-plaintes-la-colere-gronde-en-grece-apres-la-collision-mortelle-de-deux-trains_6164811_3210.html",
+  //         "urlToImage": "https://img.lemde.fr/2023/03/05/0/1/3118/2079/1440/960/60/0/f8726a3_119ae6cc1dbe47aab498577ef2113322-0-31a6eb484d694697b2455f3ba594ab87.jpg",
+  //         "publishedAt": "2023-03-09T15:15:04Z",
+  //         "content": "« Nous, les conducteurs, avons déposé des plaintes à ce sujet, nous avons fait grève à ce sujet, () mais malheureusement personne na écouté », regrette Kostas Genidounias, leader grec du syndicat des… [+852 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "bleacher-report",
+  //             "name": "Bleacher Report"
+  //         },
+  //         "author": null,
+  //         "title": "☄️ New &#x27;Hero Ball&#x27; Episode ☄️",
+  //         "description": "Fan easier, fan faster and fan better with Bleacher Report. Keep up with the latest storylines, expert analysis, highlights and scores for all your favorite sports.",
+  //         "url": "https://bleacherreport.com/videos/371669-hero-ball-2023-allstar-special",
+  //         "urlToImage": null,
+  //         "publishedAt": "2023-02-22T21:52:16.6066431Z",
+  //         "content": null
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "espn-cric-info",
+  //             "name": "ESPN Cric Info"
+  //         },
+  //         "author": null,
+  //         "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+  //         "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+  //         "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+  //         "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+  //         "publishedAt": "2020-04-27T11:41:47Z",
+  //         "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "espn-cric-info",
+  //             "name": "ESPN Cric Info"
+  //         },
+  //         "author": null,
+  //         "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+  //         "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+  //         "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+  //         "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+  //         "publishedAt": "2020-03-30T15:26:05Z",
+  //         "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "bleacher-report",
+  //             "name": "Bleacher Report"
+  //         },
+  //         "author": null,
+  //         "title": "&#x27;The Voncast&#x27; with Myles Garrett",
+  //         "description": "Fan easier, fan faster and fan better with Bleacher Report. Keep up with the latest storylines, expert analysis, highlights and scores for all your favorite sports.",
+  //         "url": "https://bleacherreport.com/videos/304730-the-voncast-with-myles-garrett",
+  //         "urlToImage": null,
+  //         "publishedAt": "2022-12-01T18:52:49.4768049Z",
+  //         "content": "Myles Garrett and Von Miller talk playing in the NBA, pick their dream NFL defense and more"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "the-washington-times",
+  //             "name": "The Washington Times"
+  //         },
+  //         "author": "The Washington Times https://www.washingtontimes.com",
+  //         "title": "Latest Quizzes",
+  //         "description": "Take a break from the hard news of the day and enjoy a quiz on entertainment, sports, history and politics only from The Washington Times.",
+  //         "url": "https://www.washingtontimes.com/quiz/",
+  //         "urlToImage": null,
+  //         "publishedAt": "2022-08-30T16:37:43.8583104Z",
+  //         "content": "Featured Quizzes\r\nTake the challenge to learn about the life and career highlights of famed nonagenarian actress and comedian Betty White.\r\n Shares \r\nRead our synopsis and correctly identify a litera… [+32510 chars]"
+  //     },
+  //     {
+  //         "source": {
+  //             "id": "usa-today",
+  //             "name": "USA Today"
+  //         },
+  //         "author": null,
+  //         "title": "Daily Briefing",
+  //         "description": "The day's top stories, from sports to movies to politics to world events.",
+  //         "url": "https://profile.usatoday.com/newsletters/daily-briefing/",
+  //         "urlToImage": "https://profile.usatoday.com/newsletters/resources/usat/property/usatoday/newsletter-thumbs/8872UT-E-NLETTER02@2x.jpg",
+  //         "publishedAt": "2021-08-15T15:35:07+00:00",
+  //         "content": "The day's top stories, from sports to movies to politics to world events."
+  //     }
+  // ]
+
+  constructor() {
+    super();
+    this.state = {
+      articles: this.articles,
+      loading: false,
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=db8f74328e11444e920e42ff01a4c00f";
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      console.log(parsedData)
+      this.setState({ articles: parsedData.articles });
+    }
+    catch (e) {
+      console.log("something is not working");
+    }
+
+  }
+
+  render() {
+    console.log(this.state.articles);
+
+    const newArticles = this.state.articles && this.state.articles.map((element) => {
+      return (
+        <div className="col-md-4" key={element.url !== null ? element.url : "..."}>
+          <NewsItem
+            title={
+              element.title !== null ? element.title.slice(0, 30) : "..."
+            }
+            description={
+              element.description !== null ? element.description.slice(0, 30) : "..."
+            }
+            imageUrl={
+              element.urlToImage !== null ? element.urlToImage : "https://reactnativecode.com/wp-content/uploads/2018/01/Error_Img.png"
+            }
+            newsUrl={element.url ? element.url : "..."}
+          />
+        </div>
+      );
+    });
+
+    return (
+      <div className="container my-3">
+        <h2>NewsMonk - Bulletine</h2>
+        <div className="row">
+          {newArticles}
+        </div>
+      </div>
+    );
+  }
+}
