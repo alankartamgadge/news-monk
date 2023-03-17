@@ -198,10 +198,9 @@ export default class News extends Component {
 
   async componentDidMount() {
     try {
-      let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=db8f74328e11444e920e42ff01a4c00f";
+      let url = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=db8f74328e11444e920e42ff01a4c00f";
       let data = await fetch(url);
       let parsedData = await data.json();
-      console.log(parsedData)
       this.setState({ articles: parsedData.articles });
     }
     catch (e) {
@@ -211,14 +210,13 @@ export default class News extends Component {
   }
 
   render() {
-    console.log(this.state.articles);
 
     const newArticles = this.state.articles && this.state.articles.map((element) => {
       return (
         <div className="col-md-4" key={element.url !== null ? element.url : "..."}>
           <NewsItem
             title={
-              element.title !== null ? element.title.slice(0, 30) : "..."
+              element.title !== null ? element.title.slice(0, 40) : "..."
             }
             description={
               element.description !== null ? element.description.slice(0, 30) : "..."
@@ -226,7 +224,7 @@ export default class News extends Component {
             imageUrl={
               element.urlToImage !== null ? element.urlToImage : "https://reactnativecode.com/wp-content/uploads/2018/01/Error_Img.png"
             }
-            newsUrl={element.url ? element.url : "..."}
+            newsUrl={element.url !== null ? element.url : "..."}
           />
         </div>
       );
