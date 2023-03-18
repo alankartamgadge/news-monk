@@ -10,13 +10,18 @@ export default class News extends Component {
     catagory: "general",
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: this.articles,
       loading: false,
       page: 1,
     };
+    document.title = `${this.capitalize(this.props.category)}`
+  }
+
+  capitalize = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
   async updateNews() {
@@ -37,12 +42,12 @@ export default class News extends Component {
   }
 
   handleNextClick = async () => {
-    await this.setState({page: this.state.page + 1});
+    await this.setState({ page: this.state.page + 1 });
     this.updateNews();
   };
 
   handlePrevClick = async () => {
-    await this.setState({page: this.state.page - 1});
+    await this.setState({ page: this.state.page - 1 });
     this.updateNews();
   };
 
@@ -85,7 +90,7 @@ export default class News extends Component {
     return (
       <div className="container my-3">
         <h1 className="text-center" style={{ margin: "35px" }}>
-          NewsMonk - Bulletine
+          NewsMonk - Top {this.capitalize(this.props.category)} Headlines
         </h1>
         {this.state.loading && <Spinner />}
         <div className="row">{newArticles}</div>
