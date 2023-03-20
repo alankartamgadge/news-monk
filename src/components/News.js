@@ -1,8 +1,7 @@
 import React, { Component } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
-import PropTypes from 'prop-types'
-import InfiniteScroll from "react-infinite-scroll-component";
 
 export default class News extends Component {
   static defaultProps = {
@@ -25,9 +24,10 @@ export default class News extends Component {
   capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
-
+  
   async updateNews() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=db8f74328e11444e920e42ff01a4c00f&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.props.setProgress(20);
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -37,6 +37,7 @@ export default class News extends Component {
       articles: parsedData.articles,
       loading: false,
     });
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
@@ -46,7 +47,7 @@ export default class News extends Component {
 
   fetchMoreData = async () => {
     this.setState({page: this.state.page+1})
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=db8f74328e11444e920e42ff01a4c00f&page=${this.state.page +1}&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page +1}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
 
@@ -54,6 +55,7 @@ export default class News extends Component {
       articles: this.state.articles.concat(parsedData.articles),
       totalResults: parsedData.totalResults
     });
+
   };
 
 
@@ -62,7 +64,6 @@ export default class News extends Component {
       
       this.state.articles &&
       this.state.articles.map((element) => {
-        console.log(element.urlToImage);
         return (
           <div className="col-md-4" key={element.url !== null ? element.url : "..."} >
             <NewsItem
